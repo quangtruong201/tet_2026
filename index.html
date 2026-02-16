@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lì xì cho em ❤️</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #8B0000, #ff4d4d);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .container {
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 35px;
+            margin-bottom: 20px;
+        }
+
+        .money {
+            font-size: 50px;
+            font-weight: bold;
+            color: gold;
+            margin: 20px 0;
+            display: none;
+            animation: pop 0.6s ease;
+        }
+
+        @keyframes pop {
+            0% {
+                transform: scale(0);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 15px;
+        }
+
+        .lixi {
+            background: gold;
+            color: red;
+        }
+
+        .loveBtn {
+            background: white;
+            color: red;
+            display: none;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+        }
+
+        .envelope {
+            font-size: 80px;
+            margin: 20px 0;
+            animation: shake 1s infinite;
+        }
+
+        @keyframes shake {
+            0% {
+                transform: rotate(0);
+            }
+
+            25% {
+                transform: rotate(5deg);
+            }
+
+            50% {
+                transform: rotate(-5deg);
+            }
+
+            75% {
+                transform: rotate(3deg);
+            }
+
+            100% {
+                transform: rotate(0);
+            }
+        }
+
+        .petal {
+            position: absolute;
+            top: -10px;
+            width: 12px;
+            height: 12px;
+            background: pink;
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>🎋 Chúc Mừng Năm Mới Em 🎋</h1>
+        <div class="envelope" id="envelope">🧧</div>
+        <div class="money" id="money"></div>
+        <button class="lixi" onclick="openLixi()">Mở Lì Xì</button>
+        <button class="loveBtn" id="loveBtn" onclick="love()">❤️ Đồng hành cùng anh cả năm nay nhé</button>
+    </div>
+
+    <script>
+
+        // hoa rơi
+        function createPetal() {
+            const petal = document.createElement("div");
+            petal.classList.add("petal");
+            petal.style.left = Math.random() * window.innerWidth + "px";
+            petal.style.animationDuration = 3 + Math.random() * 5 + "s";
+            document.body.appendChild(petal);
+            setTimeout(() => petal.remove(), 8000);
+        }
+        setInterval(createPetal, 300);
+
+        // mở lì xì
+        function openLixi() {
+            const moneyEl = document.getElementById("money");
+            const envelope = document.getElementById("envelope");
+            const btn = document.querySelector(".lixi");
+
+            // random từ 10 -> 100k
+            const amount = (Math.floor(Math.random() * 10) + 1) * 10;
+
+            envelope.innerHTML = "💌";
+            envelope.style.animation = "none";
+
+            moneyEl.style.display = "block";
+            moneyEl.innerHTML = amount + ".000 VNĐ 💰";
+
+            btn.style.display = "none";
+
+            setTimeout(() => {
+                document.getElementById("loveBtn").style.display = "inline-block";
+            }, 1500);
+        }
+
+        function love() {
+            alert("Tết này em trúng thưởng anh rồi đó 😆❤️");
+        }
+    </script>
+
+</body>
+
+</html>
